@@ -51,7 +51,7 @@ export function Header() {
           <span className="font-semibold tracking-tight text-base sm:text-lg group-hover:text-[#0A2540] transition-colors duration-200">
             {PROFILE_DATA.fullName}
           </span>
-          <span className="text-xs text-[#78716C] font-mono tracking-normal hidden sm:inline">
+          <span className="text-xs text-[#78716C] font-mono tracking-normal hidden lg:inline">
             / {PROFILE_DATA.title}
           </span>
         </Link>

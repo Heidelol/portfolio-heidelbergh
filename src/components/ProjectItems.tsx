@@ -45,15 +45,11 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
             {project.title}
           </h3>
 
-          <p className="text-sm font-medium text-[#78716C] mb-3">
-            <strong className="text-[#1C1917]">Propósito:</strong> {project.needSolved}
-          </p>
-
           <p className="text-base text-[#57534E] leading-relaxed mb-4">
             {project.description}
           </p>
 
-          {/* Decisión técnica comprobada */}
+          {/* Decisión técnica */}
           <div className="mb-4 border-l-2 border-[#0A2540] pl-3 py-0.5">
             <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#1C1917] block mb-1">
               Decisión técnica
@@ -65,7 +61,7 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
 
           {/* Contribución personal */}
           <div className="mb-4 text-xs sm:text-sm text-[#57534E] leading-relaxed">
-            <strong className="text-[#1C1917] block mb-1">Contribución confirmada:</strong>
+            <strong className="text-[#1C1917] block mb-1">Mi trabajo:</strong>
             <p>{project.personalContribution}</p>
           </div>
 
@@ -141,10 +137,6 @@ export function CompactProject({ project }: CompactProjectProps) {
               {project.title}
             </h3>
 
-            <p className="text-xs sm:text-sm text-[#78716C] mb-2.5">
-              <strong className="text-[#1C1917] font-medium">Propósito:</strong> {project.needSolved}
-            </p>
-
             <p className="text-sm sm:text-base text-[#57534E] leading-relaxed mb-3">
               {project.description}
             </p>
@@ -164,7 +156,7 @@ export function CompactProject({ project }: CompactProjectProps) {
             {/* Contribución */}
             {project.personalContribution && (
               <p className="text-xs sm:text-sm text-[#57534E] leading-relaxed mb-3">
-                <strong className="text-[#1C1917] font-medium">Contribución confirmada:</strong> {project.personalContribution}
+                <strong className="text-[#1C1917] font-medium">Mi trabajo:</strong> {project.personalContribution}
               </p>
             )}
 

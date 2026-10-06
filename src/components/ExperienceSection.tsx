@@ -54,7 +54,7 @@ export function ExperienceSection() {
               {/* Columna derecha: Responsabilidades y logros técnicos */}
               <div className="lg:col-span-7">
                 <span className="text-xs font-mono text-[#78716C] block mb-2">
-                  Responsabilidades comprobadas:
+                  Responsabilidades:
                 </span>
                 <ul className="space-y-2.5 text-sm text-[#57534E]">
                   {exp.responsibilities.map((resp, rIdx) => (
@@ -76,7 +76,7 @@ export function ExperienceSection() {
               Experiencia complementaria
             </h3>
             <p className="text-xs sm:text-sm text-[#78716C] leading-relaxed">
-              Trayectoria en gestión operativa, coordinación de equipos, asesoría jurídica y administración de proyectos previos a la especialización tecnológica.
+              Experiencia adicional en gestión y coordinación de equipos.
             </p>
           </div>
 

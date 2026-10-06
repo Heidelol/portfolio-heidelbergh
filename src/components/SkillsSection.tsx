@@ -12,7 +12,7 @@ export function SkillsSection() {
             Competencias
           </h2>
           <p className="mt-2 text-base text-[#57534E] leading-relaxed">
-            Organización de capacidades técnicas basadas en experiencia profesional y proyectos desarrollados. Sin porcentajes ni métricas abstractas.
+            Organización de capacidades técnicas basadas en experiencia profesional y proyectos desarrollados.
           </p>
         </div>
 

@@ -33,9 +33,6 @@ export default function Home() {
 
               <p className="text-xl sm:text-2xl font-semibold text-[#0A2540] tracking-tight mt-1 mb-2">
                 {PROFILE_DATA.title}
-                <span className="text-sm sm:text-base font-normal text-[#78716C] ml-2 block sm:inline">
-                  — {PROFILE_DATA.subtitle}
-                </span>
               </p>
 
               <p className="text-xs font-mono text-[#78716C] mb-6">
@@ -73,7 +70,7 @@ export default function Home() {
 
         {/* ========================================================
             2. PROYECTOS SELECCIONADOS
-            1 Proyecto Destacado (Con Fe) + 4 Proyectos con detalle
+            1 Proyecto Destacado (Kansol) + Proyectos con detalle
            ======================================================== */}
         <section id="proyectos" className="py-20 border-b border-[#E7E5E4]">
           <div className="container-editorial">
@@ -85,7 +82,7 @@ export default function Home() {
                 Proyectos
               </h2>
               <p className="mt-2 text-base text-[#57534E] leading-relaxed">
-                Casos de desarrollo que explican la necesidad resuelta, funcionalidades implementadas, decisiones técnicas y contribución personal confirmada.
+                Casos de desarrollo que muestran la solución implementada, decisiones técnicas y mi trabajo en cada interfaz.
               </p>
             </div>
 

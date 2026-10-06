@@ -70,8 +70,7 @@ export interface LanguageItem {
 
 export const PROFILE_DATA = {
   fullName: "Heidelbergh Oliver Canto",
-  title: "Desarrollador Front End",
-  subtitle: "Experiencia Front End y Full Stack",
+  title: "Desarrollador Front End · React, Next.js y TypeScript",
   location: "Quintana Roo, México",
   statement:
     "Desarrollador Front End con experiencia Full Stack desde 2021, enfocado en React, Next.js y TypeScript. Construyo interfaces legibles, eficientes y accesibles, con experiencia comprobada en integración de APIs REST y GraphQL, autenticación con Supabase, manejo de datos y diseño responsive adaptado a móvil.",
@@ -94,15 +93,15 @@ export const PROJECTS_DATA: Project[] = [
     year: "2026",
     category: "Catálogo y Showroom Digital",
     featured: true,
-    statusLabel: "Demostración pública disponible",
+    statusLabel: "Demo disponible",
     needSolved:
       "Digitalización del catálogo de revestimientos arquitectónicos para agilizar la consulta técnica de contratistas y facilitar la cotización directa de materiales.",
     description:
-      "Catálogo comercial y showroom visual de acabados (lambrín, piedra flexible, paneles PVC tipo mármol, pisos SPC, deck exterior y luminarias). Diseñado para consulta ágil de especificaciones técnicas y enlace directo a cotización personalizada por WhatsApp.",
+      "Catálogo digital y showroom visual para consulta ágil de especificaciones de revestimientos arquitectónicos y generación paramétrica de cotizaciones directas vía WhatsApp por código SKU.",
     technicalDecision:
-      "Renderizado estático optimizado con Vite/Vinext y Next.js, implementando filtrado en memoria sin recargas para asegurar respuesta instantánea en dispositivos móviles en obra.",
+      "Renderizado estático optimizado con Vite y Next.js con filtrado en memoria sin recargas para asegurar respuesta instantánea en dispositivos móviles en obra.",
     personalContribution:
-      "Desarrollo completo de la interfaz en Next.js, carrusel editorial interactivo con imágenes de alta definición, sistema de filtros dinámicos por categoría y generador paramétrico de enlaces comerciales a WhatsApp por código SKU.",
+      "Desarrollo completo de la interfaz en Next.js, carrusel editorial interactivo con imágenes optimizadas, sistema de filtros dinámicos por categoría y generador de enlaces comerciales a WhatsApp.",
     verifiedFeatures: [
       "Filtrado instantáneo en memoria de productos y colecciones por categoría técnica.",
       "Generador de mensajes de cotización vinculados al SKU del material seleccionado.",
@@ -135,15 +134,15 @@ export const PROJECTS_DATA: Project[] = [
     year: "2026",
     category: "Panel Administrativo / CRM Deportivo",
     featured: false,
-    statusLabel: "Demostración pública disponible",
+    statusLabel: "Demo disponible",
     needSolved:
       "Administración integral de socios, cobro de mensualidades por planes y registro de punto de venta (POS) para centros deportivos, eliminando registros manuales en papel.",
     description:
-      "Panel de administración interactivo para gestión de gimnasios y centros funcionales. Permite consultar el estado de membresías de socios (al corriente, por vencer, vencidas), registrar pagos, operar el punto de venta de mostrador y registrar asistencia diaria con persistencia demostrativa local.",
+      "Panel de administración interactivo para gestión de gimnasios: seguimiento de socios, control de vigencias de membresías y punto de venta (POS) de mostrador.",
     technicalDecision:
-      "Arquitectura SPA modular en JavaScript estructurada con separación de dominio, servicios de validación desacoplados, máquina de estado centralizada e interfaz reactiva sin dependencias externas pesadas.",
+      "Arquitectura SPA modular en JavaScript estructurada con separación de dominio, servicios de validación desacoplados y máquina de estado centralizada.",
     personalContribution:
-      "Arquitectura de componentes de interfaz (AppShell, diálogos modales, tablas de datos con ordenamiento), gestión de estado en memoria y flujos de cobro con cálculo de vigencias.",
+      "Construcción de la interfaz (AppShell, modales accesibles y tablas con ordenamiento), gestión de estado en memoria y flujos de cobro con cálculo de vigencias.",
     verifiedFeatures: [
       "Tablero de control con métricas en tiempo real de socios activos, asistencias y ventas del día.",
       "Módulo de socios con búsqueda por nombre y filtros por vigencia de membresía.",
@@ -176,15 +175,15 @@ export const PROJECTS_DATA: Project[] = [
     year: "2026",
     category: "Menú Digital y Pedidos",
     featured: false,
-    statusLabel: "Demostración pública disponible",
+    statusLabel: "Demo disponible",
     needSolved:
       "Catálogo digital accesible para restaurantes que permite a los comensales seleccionar platillos y formalizar pedidos directos sin intermediarios ni comisiones de plataformas.",
     description:
-      "Demostración interactiva de menú digital para restaurantes y cafeterías. Integra catálogo fotográfico organizado por categorías gastronómicas, selector de porciones y notas especiales, carrito de compra flotante con cálculo en vivo y generador de resumen para pedido directo.",
+      "Demostración interactiva de menú digital para restaurantes con navegación rápida por categorías, selección de opciones y carrito flotante con cálculo en vivo.",
     technicalDecision:
-      "Maquetación editorial ligera en HTML5 semántico y Vanilla JavaScript, garantizando carga inmediata bajo conexiones móviles lentas y experiencia táctil fluida con drawer deslizable.",
+      "Maquetación semántica y ligera con Vanilla JavaScript y CSS moderno para asegurar carga inmediata bajo conexiones móviles lentas.",
     personalContribution:
-      "Desarrollo del flujo interactivo de carrito en el cliente: cálculo reactivo de totales, persistencia de notas de comensal, apertura/cierre accesible del drawer y formateo de texto de orden.",
+      "Desarrollo del flujo interactivo del carrito en el cliente: cálculo reactivo de importes, notas de comensal y drawer lateral accesible.",
     verifiedFeatures: [
       "Catálogo fotográfico con navegación rápida por categorías y estados activos.",
       "Carrito interactivo con controles de adición, sustracción y desglose de precio.",
@@ -217,15 +216,15 @@ export const PROJECTS_DATA: Project[] = [
     year: "2026",
     category: "Aplicación Web de Eventos",
     featured: false,
-    statusLabel: "Demostración pública disponible",
+    statusLabel: "Demo disponible",
     needSolved:
       "Gestión de invitaciones digitales para eventos con confirmación de asistencia en tiempo real, asignación personalizada de cupos y acceso administrativo protegido.",
     description:
-      "Sitio web para evento con experiencia multimedia: carrusel a pantalla completa, reproductor de música ambiental, cuenta regresiva dinámica, visor fotográfico en lightbox y formulario RSVP demostrativo con control estricto de cupos.",
+      "Aplicación web para evento con experiencia multimedia: cuenta regresiva, reproductor musical ambiental, galería en lightbox y formulario RSVP con asignación de pases.",
     technicalDecision:
-      "Arquitectura desacoplada en JavaScript Vanilla modular con cliente Supabase en el panel administrativo, permitiendo una experiencia de usuario rápida y liviana en la invitación pública junto con acceso restringido para los anfitriones.",
+      "Arquitectura desacoplada en JavaScript modular con cliente Supabase en el panel de administración privado para separar la experiencia pública de la gestión de invitados.",
     personalContribution:
-      "Construcción completa de la interfaz con HTML5 semántico, CSS3 modular y JavaScript orientado a eventos; integración del cliente Supabase para consulta en panel de gestión privada.",
+      "Construcción completa de la interfaz con HTML5 semántico y CSS3 modular, lógica orientada a eventos e integración de Supabase para consulta en panel privado.",
     verifiedFeatures: [
       "Formulario RSVP con validación de invitados, opción de confirmación y selección de pases asignados.",
       "Panel de administración privado con autenticación Supabase JS para consulta de confirmados.",
@@ -262,11 +261,11 @@ export const PROJECTS_DATA: Project[] = [
     needSolved:
       "Acompañamiento personal guiado a través de experiencias de oración estructuradas, eliminando la fricción y distracciones para el usuario en momentos de silencio y contemplación.",
     description:
-      "Aplicación web de oración y acompañamiento contemplativo por etapas. Proporciona un catálogo temático de reflexiones con audio sincronizado, el módulo interactivo 'Camino' para registrar y categorizar intenciones personales, y sesiones autenticadas persistentes mediante Supabase SSR. Presentado como proyecto en desarrollo con código fuente público en GitHub.",
+      "Aplicación web de oración y acompañamiento contemplativo por etapas, con reflexiones guiadas en audio y registro categorizado de intenciones personales ('Camino').",
     technicalDecision:
-      "Implementación de Next.js App Router combinando Server Components para la carga inicial de datos con Client Components en las sesiones interactivas, reduciendo la sobrecarga de estado en el cliente y manteniendo la sincronización de sesión con cookies HTTP-only vía @supabase/ssr.",
+      "Next.js App Router combinando Server Components para carga inicial y Client Components para sesiones interactivas, con sincronización de sesiones mediante cookies HTTP-only vía @supabase/ssr.",
     personalContribution:
-      "Arquitectura completa del front-end en Next.js (React 19, TypeScript), diseño de componentes modulares con Tailwind CSS, gestión de estado con contextos React e integración de autenticación persistente.",
+      "Arquitectura del front-end en Next.js (React 19, TypeScript), diseño de componentes modulares con Tailwind CSS, contextos de estado e integración de autenticación persistente.",
     verifiedFeatures: [
       "Flujo guiado de oración por etapas con controles multimedia libres de fricción.",
       "Módulo 'Camino' para gestión de intenciones con filtros de estado (orando, agradecida, pausada).",
@@ -303,11 +302,11 @@ export const PROJECTS_DATA: Project[] = [
     needSolved:
       "Gestión integral de catálogo de productos, procesamiento de órdenes, administración de inventarios y control de acceso seguro mediante panel administrativo.",
     description:
-      "Plataforma de comercio electrónico con panel administrativo privado desarrollado dentro de un equipo ágil de tres ingenieros en Kaizenzo. Incluye exploración y filtrado dinámico de productos, gestión de tablas relacionales, operaciones CRUD completas y autenticación con control de roles.",
+      "Plataforma de comercio electrónico con catálogo de productos y panel administrativo privado para gestión de órdenes, inventarios y clientes.",
     technicalDecision:
-      "Uso de Next.js junto a Supabase y Node.js para desacoplar las operaciones públicas del catálogo de las transacciones protegidas del panel administrativo con JWT, garantizando validación de esquemas en servidor y consultas relacionales eficientes.",
+      "Next.js desacoplado junto a Supabase y servicios Node.js con autenticación JWT para separar las vistas públicas del catálogo de las operaciones CRUD protegidas.",
     personalContribution:
-      "Desarrollo colaborativo de vistas de catálogo y componentes de administración en React y TypeScript, consumo de endpoints REST/GraphQL, diseño de interfaces responsive con Tailwind CSS y validación funcional con Jest y Postman.",
+      "Desarrollo colaborativo en React y TypeScript para vistas de catálogo y administración, consumo de endpoints REST/GraphQL, diseño responsive con Tailwind CSS y pruebas unitarias con Jest.",
     verifiedFeatures: [
       "Catálogo público de productos con búsqueda en tiempo real y filtros combinados.",
       "Panel administrativo con tablas de datos, relaciones y operaciones CRUD seguras.",
