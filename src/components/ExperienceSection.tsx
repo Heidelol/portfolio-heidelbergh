@@ -39,14 +39,21 @@ export function ExperienceSection() {
                   {exp.description}
                 </p>
 
-                {exp.technologies && (
+                {exp.technologies && exp.technologies.length > 0 && (
                   <div className="mt-4">
-                    <span className="text-xs font-mono text-[#78716C] block mb-1">
+                    <span className="text-xs font-mono text-[#78716C] block mb-1.5">
                       Stack utilizado:
                     </span>
-                    <p className="text-xs font-mono text-[#1C1917]">
-                      {exp.technologies.join(" · ")}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      {exp.technologies.map((tech, tIdx, arr) => (
+                        <span key={tech} className="inline-flex items-center">
+                          <span className="text-xs font-mono text-[#1C1917] whitespace-nowrap">{tech}</span>
+                          {tIdx < arr.length - 1 && (
+                            <span className="text-xs font-mono text-[#A8A29E] ml-2 select-none">·</span>
+                          )}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

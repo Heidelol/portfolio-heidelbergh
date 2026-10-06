@@ -4,6 +4,17 @@ export interface ProjectLink {
   label: string;
 }
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  aspectRatio: string;
+  fit: 'cover' | 'contain';
+  position: 'top' | 'center' | 'bottom';
+  containerBg?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -17,12 +28,7 @@ export interface Project {
   technologies: string[];
   technicalDecision: string;
   personalContribution: string;
-  image?: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
+  image?: ProjectImage;
   link?: ProjectLink;
   demoUrl?: string;
   githubUrl?: string;
@@ -109,17 +115,21 @@ export const PROJECTS_DATA: Project[] = [
       "Optimización de empaquetado y entrega estática de recursos en el edge."
     ],
     technologies: [
-      "React 19",
-      "Next.js 16",
-      "TypeScript 5",
-      "Vinext / Vite",
-      "Tailwind CSS 4"
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS"
     ],
     image: {
       src: "/images/projects/kansol-preview.jpg",
-      alt: "Captura del catálogo digital de Kansol destacando revestimientos de interiores",
-      width: 1400,
-      height: 900
+      alt: "Captura del catálogo digital de Kansol con barra de navegación, colecciones y showroom",
+      width: 1280,
+      height: 800,
+      aspectRatio: "aspect-[16/10]",
+      fit: "cover",
+      position: "top",
+      containerBg: "bg-[#1A1A1A]"
     },
     demoUrl: "https://kansol.vercel.app",
     link: {
@@ -150,17 +160,21 @@ export const PROJECTS_DATA: Project[] = [
       "Registro de pagos con cálculo automático de días de extensión según plan seleccionado."
     ],
     technologies: [
-      "JavaScript ES6+",
+      "JavaScript",
       "HTML5 Semántico",
-      "CSS3 Modular",
-      "Web Components / SPA",
+      "CSS3",
+      "SPA / Web Components",
       "Vercel"
     ],
     image: {
       src: "/images/projects/cfch-control-preview.png",
       alt: "Captura del panel administrativo de CFCH Control mostrando tablero de socios y métricas de cobro",
       width: 1280,
-      height: 800
+      height: 800,
+      aspectRatio: "aspect-[16/10]",
+      fit: "cover",
+      position: "top",
+      containerBg: "bg-[#0B1528]"
     },
     demoUrl: "https://cfch-control.vercel.app",
     link: {
@@ -192,16 +206,20 @@ export const PROJECTS_DATA: Project[] = [
     ],
     technologies: [
       "HTML5 Semántico",
-      "CSS3 Moderno",
-      "JavaScript Nativo",
+      "CSS3",
+      "JavaScript",
       "Diseño Responsive",
       "Vercel"
     ],
     image: {
       src: "/images/projects/menu-marea-preview.jpg",
-      alt: "Captura de la demo interactiva de Menú Marea con catálogo de platillos y carrito de compra",
+      alt: "Captura de la demo interactiva de Menú Marea con categorías, platillos destacados y controles de pedido",
       width: 1280,
-      height: 800
+      height: 800,
+      aspectRatio: "aspect-[16/10]",
+      fit: "cover",
+      position: "top",
+      containerBg: "bg-[#F7F3EB]"
     },
     demoUrl: "https://menu-marea.vercel.app/demo/",
     link: {
@@ -232,17 +250,21 @@ export const PROJECTS_DATA: Project[] = [
       "Reproductor de música con estado persistente e indicación visual de audio."
     ],
     technologies: [
-      "JavaScript ES6+",
+      "JavaScript",
       "HTML5 Semántico",
-      "CSS3 Modular",
-      "@supabase/supabase-js 2",
+      "CSS3",
+      "Supabase",
       "Vercel"
     ],
     image: {
       src: "/images/projects/boda-diana-raul-preview.jpg",
-      alt: "Captura de la invitación digital destacando la apertura al atardecer y detalles del evento",
-      width: 1200,
-      height: 800
+      alt: "Captura de la invitación digital mostrando nombres de los novios, cuenta regresiva y navegación",
+      width: 1280,
+      height: 800,
+      aspectRatio: "aspect-[16/10]",
+      fit: "cover",
+      position: "center",
+      containerBg: "bg-[#464C3D]"
     },
     demoUrl: "https://boda-diana-raul.vercel.app",
     link: {
@@ -273,17 +295,21 @@ export const PROJECTS_DATA: Project[] = [
       "Diseño adaptable para móvil con foco visible, contraste verificado y paleta sobria."
     ],
     technologies: [
-      "React 19",
-      "Next.js 16 (App Router)",
-      "TypeScript 5",
-      "@supabase/ssr",
-      "Tailwind CSS 4"
+      "React",
+      "Next.js (App Router)",
+      "TypeScript",
+      "Supabase SSR",
+      "Tailwind CSS"
     ],
     image: {
       src: "/images/projects/con-fe-preview.png",
-      alt: "Captura real de la interfaz en desarrollo de Con Fe con la oración del día y momentos espirituales",
-      width: 1170,
-      height: 1800
+      alt: "Captura completa de la interfaz en desarrollo de Con Fe con momentos de oración y módulo Camino",
+      width: 780,
+      height: 1688,
+      aspectRatio: "aspect-[4/5]",
+      fit: "contain",
+      position: "center",
+      containerBg: "bg-[#F7F4EE]"
     },
     githubUrl: "https://github.com/Heidelol/con-fe",
     link: {
@@ -318,7 +344,7 @@ export const PROJECTS_DATA: Project[] = [
       "Next.js",
       "TypeScript",
       "Node.js",
-      "Supabase / PostgreSQL",
+      "Supabase",
       "Tailwind CSS",
       "GraphQL & REST",
       "Jest"

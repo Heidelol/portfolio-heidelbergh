@@ -45,20 +45,20 @@ export function Header() {
       <div className="container-editorial flex items-center justify-between h-16">
         <Link
           href="#inicio"
-          className="group flex items-baseline gap-2 text-[#1C1917] no-underline focus-visible:outline-none"
+          className="group flex items-baseline gap-2 text-[#1C1917] no-underline focus-visible:outline-none flex-shrink-0"
           aria-label={`Ir al inicio - ${PROFILE_DATA.fullName}`}
         >
-          <span className="font-semibold tracking-tight text-base sm:text-lg group-hover:text-[#0A2540] transition-colors duration-200">
+          <span className="font-semibold tracking-tight text-base sm:text-lg group-hover:text-[#0A2540] transition-colors duration-200 whitespace-nowrap flex-shrink-0">
             {PROFILE_DATA.fullName}
           </span>
-          <span className="text-xs text-[#78716C] font-mono tracking-normal hidden lg:inline">
-            / {PROFILE_DATA.title}
+          <span className="text-xs text-[#78716C] font-mono tracking-normal hidden xl:inline whitespace-nowrap flex-shrink-0">
+            / Front End
           </span>
         </Link>
 
-        {/* Navegación Desktop */}
+        {/* Navegación Desktop (visible a partir de lg: 1024px) */}
         <nav
-          className="hidden md:flex items-center gap-6"
+          className="hidden lg:flex items-center gap-6 flex-shrink-0"
           aria-label="Navegación principal"
         >
           {SECTIONS.map((sec) => {
@@ -67,7 +67,7 @@ export function Header() {
               <a
                 key={sec.id}
                 href={`#${sec.id}`}
-                className={`text-sm tracking-tight transition-editorial py-1 ${
+                className={`text-sm tracking-tight transition-editorial py-1 whitespace-nowrap flex-shrink-0 ${
                   isActive
                     ? "text-[#0A2540] font-semibold border-b-2 border-[#0A2540]"
                     : "text-[#57534E] hover:text-[#1C1917]"
@@ -82,18 +82,18 @@ export function Header() {
             href={PROFILE_DATA.contact.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-mono font-medium text-[#1C1917] hover:text-[#0A2540] px-2.5 py-1 rounded border border-[#D6D3D1] hover:border-[#1C1917] transition-editorial"
+            className="text-xs font-mono font-medium text-[#1C1917] hover:text-[#0A2540] px-2.5 py-1 rounded border border-[#D6D3D1] hover:border-[#1C1917] transition-editorial whitespace-nowrap flex-shrink-0"
             aria-label="Perfil de GitHub (abre en nueva pestaña)"
           >
             GitHub ↗
           </a>
         </nav>
 
-        {/* Botón menú móvil con espacio táctil amplio (min 44x44px) */}
+        {/* Botón menú móvil (visible por debajo de lg) con espacio táctil amplio (min 44x44px) */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-[#1C1917] hover:bg-[#F5F5F4] rounded transition-editorial"
+          className="lg:hidden flex items-center justify-center w-11 h-11 -mr-2 text-[#1C1917] hover:bg-[#F5F5F4] rounded transition-editorial flex-shrink-0"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú principal"}
         >
@@ -116,7 +116,7 @@ export function Header() {
 
       {/* Menú desplegable móvil */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-[#E7E5E4] bg-[#FAFAF9] px-6 py-4 space-y-3">
+        <div className="lg:hidden border-b border-[#E7E5E4] bg-[#FAFAF9] px-6 py-4 space-y-3">
           {SECTIONS.map((sec) => (
             <a
               key={sec.id}

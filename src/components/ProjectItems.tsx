@@ -6,19 +6,29 @@ interface FeaturedProjectProps {
 }
 
 export function FeaturedProject({ project }: FeaturedProjectProps) {
+  const imageAspect = project.image?.aspectRatio || "aspect-[16/10]";
+  const imageBg = project.image?.containerBg || "bg-[#F5F5F4]";
+  const imageFit = project.image?.fit === "contain" ? "object-contain p-2 sm:p-3" : "object-cover";
+  const imagePosition =
+    project.image?.position === "center"
+      ? "object-center"
+      : project.image?.position === "bottom"
+      ? "object-bottom"
+      : "object-top";
+
   return (
     <article className="border-b border-[#E7E5E4] pb-12 lg:pb-16">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Captura destacada */}
         <div className="lg:col-span-7 group">
           {project.image && (
-            <div className="relative w-full aspect-[16/10] bg-[#F5F5F4] border border-[#E7E5E4] overflow-hidden">
+            <div className={`relative w-full ${imageAspect} ${imageBg} border border-[#E7E5E4] overflow-hidden`}>
               <Image
                 src={project.image.src}
                 alt={project.image.alt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover object-top project-image-hover"
+                className={`${imageFit} ${imagePosition} project-image-hover`}
                 priority
               />
             </div>
@@ -66,11 +76,16 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
           </div>
 
           {/* Tecnologías */}
-          <div className="mb-5">
-            <span className="text-xs font-mono text-[#78716C] mr-2">Stack:</span>
-            <span className="text-xs font-mono text-[#1C1917] tracking-tight">
-              {project.technologies.join(" · ")}
-            </span>
+          <div className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span className="text-xs font-mono text-[#78716C] mr-1">Stack:</span>
+            {project.technologies.map((tech, tIdx) => (
+              <span key={tech} className="inline-flex items-center">
+                <span className="text-xs font-mono text-[#1C1917] whitespace-nowrap">{tech}</span>
+                {tIdx < project.technologies.length - 1 && (
+                  <span className="text-xs font-mono text-[#A8A29E] ml-2 select-none">·</span>
+                )}
+              </span>
+            ))}
           </div>
 
           {/* Enlaces a proyecto */}
@@ -97,19 +112,29 @@ interface CompactProjectProps {
 }
 
 export function CompactProject({ project }: CompactProjectProps) {
+  const imageAspect = project.image?.aspectRatio || "aspect-[16/10]";
+  const imageBg = project.image?.containerBg || "bg-[#F5F5F4]";
+  const imageFit = project.image?.fit === "contain" ? "object-contain p-2 sm:p-3" : "object-cover";
+  const imagePosition =
+    project.image?.position === "center"
+      ? "object-center"
+      : project.image?.position === "bottom"
+      ? "object-bottom"
+      : "object-top";
+
   return (
     <article className="border-b border-[#E7E5E4] pb-10 pt-8">
       <div className={`grid grid-cols-1 ${project.image ? "md:grid-cols-12" : ""} gap-6 md:gap-8 items-start`}>
         {/* Captura si existe */}
         {project.image && (
           <div className="md:col-span-5 group">
-            <div className="relative w-full aspect-[16/10] bg-[#F5F5F4] border border-[#E7E5E4] overflow-hidden">
+            <div className={`relative w-full ${imageAspect} ${imageBg} border border-[#E7E5E4] overflow-hidden`}>
               <Image
                 src={project.image.src}
                 alt={project.image.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover object-top project-image-hover"
+                className={`${imageFit} ${imagePosition} project-image-hover`}
                 loading="lazy"
               />
             </div>
@@ -160,11 +185,16 @@ export function CompactProject({ project }: CompactProjectProps) {
               </p>
             )}
 
-            <div className="mb-3">
-              <span className="text-xs font-mono text-[#78716C] mr-2">Stack:</span>
-              <span className="text-xs font-mono text-[#1C1917]">
-                {project.technologies.join(" · ")}
-              </span>
+            <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+              <span className="text-xs font-mono text-[#78716C] mr-1">Stack:</span>
+              {project.technologies.map((tech, tIdx) => (
+                <span key={tech} className="inline-flex items-center">
+                  <span className="text-xs font-mono text-[#1C1917] whitespace-nowrap">{tech}</span>
+                  {tIdx < project.technologies.length - 1 && (
+                    <span className="text-xs font-mono text-[#A8A29E] ml-2 select-none">·</span>
+                  )}
+                </span>
+              ))}
             </div>
           </div>
 
