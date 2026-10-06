@@ -1,46 +1,43 @@
 export interface Project {
   id: string;
   title: string;
-  subtitle: string;
+  year: string;
   category: string;
+  featured: boolean; // true para el proyecto principal destacado
   status: 'published' | 'in_development' | 'proposal_demo';
   statusLabel: string;
-  isPublished: boolean;
-  description: string;
+  summary: string;
   personalContribution: string;
   verifiedFeatures: string[];
-  technologies: {
-    name: string;
-    badge: string;
-  }[];
+  technologies: string[];
   image: {
     src: string;
     alt: string;
     width: number;
     height: number;
-    isRealCapture: boolean;
   };
   repository?: {
     available: boolean;
     url?: string;
     branch?: string;
+    label: string;
     note?: string;
   };
   liveDemo?: {
     available: boolean;
     url?: string;
+    label?: string;
     note?: string;
   };
   pendingItems?: string[];
 }
 
-export interface TechnicalSkillGroup {
-  category: string;
+export interface TechnicalCompetence {
+  area: string;
   description: string;
-  skills: {
-    name: string;
-    context: string;
-    highlight?: boolean;
+  items: {
+    title: string;
+    evidence: string;
   }[];
 }
 
@@ -48,176 +45,171 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: "con-fe",
     title: "Con Fe",
-    subtitle: "Plataforma web de acompañamiento espiritual y oración contemplativa",
+    year: "2026",
     category: "Aplicación Web Full-Stack",
+    featured: true,
     status: "in_development",
-    statusLabel: "En desarrollo activo (Integración Supabase SSR)",
-    isPublished: false,
-    description:
-      "Aplicación web orientada a la serenidad y la contemplación guiada. Provee experiencias de oración estructuradas por momentos, catálogo temático de oraciones con audio sincronizado, módulo interactivo 'Camino' para gestión personal de intenciones con filtros de estado (orando, agradecida, pausada) y flujos autenticados.",
+    statusLabel: "En desarrollo",
+    summary:
+      "Plataforma de acompañamiento espiritual y oración contemplativa estructurada por momentos. Integra catálogo temático de oraciones con audio sincronizado, el módulo interactivo 'Camino' para registrar y actualizar intenciones, y sesiones autenticadas mediante Supabase SSR.",
     personalContribution:
-      "Arquitectura front-end en Next.js App Router (React 19, TypeScript), diseño de componentes accesibles adaptados a móvil y escritorio, persistencia y estado mediante contextos React e integración de autenticación segura y persistente con Supabase (@supabase/ssr).",
+      "Arquitectura completa del front-end en Next.js (App Router, React 19, TypeScript), diseño adaptable para móvil y escritorio, persistencia de estado mediante contextos React e integración de autenticación y sesiones con Supabase (@supabase/ssr).",
     verifiedFeatures: [
-      "Flujo guiado de oración por etapas con controles multimedia e interfaces libres de fricción.",
-      "Módulo de intenciones ('Camino') con categorización, cambio de estados y confirmaciones visuales.",
-      "Protección de rutas autenticadas y sincronización de sesiones vía Supabase SSR.",
-      "Diseño adaptable 'mobile-first' con paleta cromática sobria e introspectiva (#F7F4EE, #1F3443)."
+      "Flujo guiado de oración por etapas con controles multimedia libres de fricción.",
+      "Módulo 'Camino' para gestión de intenciones con filtros de estado (orando, agradecida, pausada).",
+      "Protección de rutas autenticadas y sincronización de sesiones en servidor y cliente con Supabase.",
+      "Interfaz adaptada a móvil con foco visible, contraste verificado y paleta sobria."
     ],
     technologies: [
-      { name: "React 19", badge: "React 19" },
-      { name: "Next.js 16 (App Router)", badge: "Next.js" },
-      { name: "TypeScript 5", badge: "TypeScript" },
-      { name: "@supabase/ssr & supabase-js", badge: "Supabase" },
-      { name: "Tailwind CSS 4", badge: "Tailwind CSS" }
+      "React 19",
+      "Next.js 16 (App Router)",
+      "TypeScript 5",
+      "@supabase/ssr",
+      "Tailwind CSS 4"
     ],
     image: {
       src: "/images/projects/con-fe-preview.png",
-      alt: "Captura real de la interfaz de Con Fe mostrando la pantalla de oración del día y momentos espirituales",
+      alt: "Captura de la pantalla principal de Con Fe con la oración del día y momentos espirituales",
       width: 1170,
-      height: 1800,
-      isRealCapture: true
+      height: 1800
     },
     repository: {
       available: false,
-      note: "Repositorio local verificado en entorno de trabajo; pendiente de publicación a GitHub remoto."
+      label: "Código en repositorio local",
+      note: "Código verificado en entorno de trabajo; pendiente de sincronización a repositorio público."
     },
     liveDemo: {
       available: false,
-      note: "Entorno local verificado. Pendiente de despliegue a producción y configuración de variables Supabase."
+      note: "Servidor local comprobado. Pendiente de asignación de dominio y variables de producción."
     },
     pendingItems: [
-      "Vincular repositorio a GitHub remoto público u organizacional.",
-      "Definir dominio y desplegar en Vercel con variables de entorno de producción.",
-      "Completar suite de pruebas end-to-end automatizadas."
+      "Sincronizar a repositorio GitHub remoto.",
+      "Desplegar a producción con variables de entorno de Supabase configuradas."
     ]
   },
   {
     id: "kansol",
     title: "Kansol",
-    subtitle: "Catálogo y showroom digital de materiales arquitectónicos y revestimientos",
-    category: "Comercio B2B & Catálogo Digital",
+    year: "2026",
+    category: "Catálogo y Showroom Digital",
+    featured: false,
     status: "published",
-    statusLabel: "Catálogo publicado / Demostrador en producción",
-    isPublished: true,
-    description:
-      "Plataforma comercial y catálogo visual para una firma de acabados arquitectónicos (lambrín, piedra flexible, paneles PVC tipo mármol, pisos SPC, deck exterior y luminarias). Diseñado para consulta rápida de especificaciones técnicas y cotización directa por WhatsApp.",
+    statusLabel: "Publicado",
+    summary:
+      "Catálogo visual de acabados y revestimientos arquitectónicos (lambrín, piedra flexible, paneles PVC, pisos SPC, deck exterior y luminarias). Diseñado para consulta rápida de especificaciones técnicas y enlace directo a cotización personalizada por WhatsApp.",
     personalContribution:
-      "Desarrollo de interfaz de usuario con Next.js y Vinext, carrusel editorial interactivo con imágenes de alta definición, sistema de filtros dinámicos por categoría sin recarga y generación paramétrica de enlaces comerciales directos.",
+      "Desarrollo de la interfaz de usuario con Next.js y Vinext, carrusel editorial interactivo con imágenes de alta definición, sistema de filtros dinámicos por categoría sin recargas y generador paramétrico de enlaces comerciales a WhatsApp por código SKU.",
     verifiedFeatures: [
       "Filtrado instantáneo en memoria de productos y colecciones por categoría técnica.",
-      "Generador automático de mensajes y cotizaciones por WhatsApp vinculados a códigos de material (SKU).",
-      "Carrusel editorial responsivo con carga diferida de imágenes e hipervínculos a colecciones detalladas.",
-      "Optimización para rendimiento y renderizado estático en el edge."
+      "Generador de mensajes de cotización vinculados al SKU del material seleccionado.",
+      "Carrusel editorial responsivo con carga diferida de imágenes y navegación accesible.",
+      "Optimización de empaquetado y renderizado estático en el edge."
     ],
     technologies: [
-      { name: "React 19", badge: "React 19" },
-      { name: "Next.js 16", badge: "Next.js" },
-      { name: "TypeScript 5", badge: "TypeScript" },
-      { name: "Tailwind CSS 4", badge: "Tailwind CSS" },
-      { name: "Vinext / Vite", badge: "Vinext" }
+      "React 19",
+      "Next.js 16",
+      "TypeScript 5",
+      "Vinext / Vite",
+      "Tailwind CSS 4"
     ],
     image: {
       src: "/images/projects/kansol-preview.jpg",
-      alt: "Captura del catálogo digital de Kansol destacando revestimientos de interiores y colecciones de acabados",
+      alt: "Captura del catálogo digital de Kansol destacando revestimientos de interiores",
       width: 1400,
-      height: 900,
-      isRealCapture: true
+      height: 900
     },
     repository: {
       available: true,
       url: "https://github.com/Heidelol/kansol",
       branch: "main",
-      note: "Repositorio verificado en GitHub (Heidelol/kansol)."
+      label: "Ver código en GitHub"
     },
     liveDemo: {
       available: false,
-      note: "Compilación y assets generados (.vercel / dist) comprobados en workspace; URL pública pendiente de confirmación de dominio."
+      note: "Compilación de producción generada en workspace; dominio público pendiente de confirmación."
     },
     pendingItems: [
-      "Confirmar URL pública del dominio definitivo de producción.",
-      "Validar el feed de disponibilidad de inventario con el cliente."
+      "Confirmar URL pública del dominio definitivo de producción."
     ]
   },
   {
     id: "boda-diana-raul",
     title: "Invitación de Boda Sofía & Raúl",
-    subtitle: "Invitación interactiva con confirmación de asistencia (RSVP) y control de cupos",
+    year: "2026",
     category: "Aplicación Web de Eventos",
+    featured: false,
     status: "published",
-    statusLabel: "Publicado / Código verificado en GitHub",
-    isPublished: true,
-    description:
-      "Sitio web para boda con diseño editorial y experiencia multimedia: carrusel a pantalla completa, reproductor de música ambiental, cuenta regresiva dinámica en tiempo real, visor de galería en lightbox y formulario de confirmación de asistencia con control estricto de cupos y panel administrativo privado.",
+    statusLabel: "Publicado",
+    summary:
+      "Sitio web de evento con diseño editorial y experiencia multimedia: carrusel a pantalla completa, reproductor de música ambiental, cuenta regresiva en tiempo real, visor de galería en lightbox y formulario de confirmación de asistencia con control estricto de cupos y panel administrativo privado.",
     personalContribution:
-      "Construcción completa de la interfaz con HTML5 semántico, CSS3 modular y Vanilla JavaScript orientado a eventos; integración del cliente Supabase para autenticación y consulta en panel de gestión privada (`admin.html`) y control de asistencia.",
+      "Implementación de la interfaz con HTML5 semántico, CSS3 modular y JavaScript orientado a eventos; integración del cliente Supabase para autenticación y consulta en panel de gestión privada (admin.html) y control de confirmaciones.",
     verifiedFeatures: [
       "Formulario RSVP con validación de invitados, opción de confirmación y selección de pases asignados.",
-      "Panel de administración privado (`admin.html`) con autenticación Supabase JS para consulta de confirmados.",
-      "Cuenta regresiva en vivo hasta el evento y visor de fotos con navegación lightbox accesible.",
-      "Reproductor de música ambiental con estado persistente e interacción visual de ondas sonoras."
+      "Panel administrativo privado con autenticación Supabase JS para consulta de confirmados.",
+      "Cuenta regresiva en vivo y visor de fotos con navegación lightbox accesible.",
+      "Reproductor de música con estado persistente e indicación visual de audio."
     ],
     technologies: [
-      { name: "JavaScript ES6+", badge: "JavaScript" },
-      { name: "HTML5 Semántico", badge: "HTML5" },
-      { name: "CSS3 Modular", badge: "CSS3" },
-      { name: "@supabase/supabase-js 2", badge: "Supabase" },
-      { name: "Vercel Deployment", badge: "Vercel" }
+      "JavaScript ES6+",
+      "HTML5 Semántico",
+      "CSS3 Modular",
+      "@supabase/supabase-js 2",
+      "Vercel"
     ],
     image: {
       src: "/images/projects/boda-diana-raul-preview.jpg",
-      alt: "Captura de la invitación digital para Sofía y Raúl destacando la apertura al atardecer y detalles del evento",
+      alt: "Captura de la invitación digital destacando la apertura al atardecer y detalles del evento",
       width: 1200,
-      height: 800,
-      isRealCapture: true
+      height: 800
     },
     repository: {
       available: true,
       url: "https://github.com/Heidelol/boda-diana-raul",
       branch: "main",
-      note: "Repositorio verificado en GitHub (Heidelol/boda-diana-raul)."
+      label: "Ver código en GitHub"
     },
     liveDemo: {
       available: false,
-      note: "Configuración para Vercel (vercel.json) incluida en el repositorio. URL pública personalizada sujeta a verificación de los novios."
+      note: "Configuración para Vercel (vercel.json) incluida en el repositorio. URL personalizada sujeta a verificación de los novios."
     },
     pendingItems: [
-      "Documentar URL oficial de despliegue en Vercel una vez validado con los novios.",
-      "Configurar credenciales seguras de Supabase en producción."
+      "Documentar URL oficial de despliegue en Vercel una vez validada con los anfitriones."
     ]
   },
   {
     id: "dra-ilse-villanueva",
     title: "Dra. Ilse Villanueva",
-    subtitle: "Propuesta de sitio web profesional para clínica de medicina estética",
-    category: "Sitio Web Institucional / Salud",
+    year: "2026",
+    category: "Propuesta Web / Salud",
+    featured: false,
     status: "proposal_demo",
-    statusLabel: "Propuesta demostrativa local (Validada en maquetación)",
-    isPublished: false,
-    description:
+    statusLabel: "Propuesta local",
+    summary:
       "Maqueta interactiva de alta fidelidad diseñada para presentar servicios médicos y tratamientos estéticos de manera sobria y profesional. Incluye bento-grid adaptable de tratamientos, filtrado por área clínica, diseño editorial con paleta marfil y arena, y navegación optimizada para personas con preferencia de movimiento reducido.",
     personalContribution:
-      "Diseño y desarrollo front-end con CSS moderno y JavaScript nativo (`IntersectionObserver`), arquitectura de componentes accesibles (foco visible, alto contraste, semántica médica clara) y comprobación integral mediante suite de tests con `node --test`.",
+      "Diseño y desarrollo front-end con CSS moderno y JavaScript nativo (IntersectionObserver), arquitectura de componentes accesibles (foco visible, alto contraste, semántica médica clara) y comprobación integral mediante suite de tests con node --test.",
     verifiedFeatures: [
       "Catálogo interactivo con filtrado por categoría clínica (Facial, Corporal, Regenerativa, Antienvejecimiento).",
-      "Revelación progresiva de elementos con `IntersectionObserver` y degradación elegante si no está soportado.",
-      "Respeto estricto a `prefers-reduced-motion` para accesibilidad visual.",
+      "Revelación progresiva de elementos con IntersectionObserver y degradación elegante si no está soportado.",
+      "Respeto estricto a prefers-reduced-motion para accesibilidad visual.",
       "Diseño adaptable bento a columna única en dispositivos móviles."
     ],
     technologies: [
-      { name: "HTML5 Semántico", badge: "HTML5" },
-      { name: "CSS3 Moderno", badge: "CSS3" },
-      { name: "JavaScript Vanilla", badge: "JavaScript" },
-      { name: "Node.js Test Runner", badge: "Node.js Test" }
+      "HTML5 Semántico",
+      "CSS3 Moderno",
+      "JavaScript Nativo",
+      "Node.js Test Runner"
     ],
     image: {
       src: "/images/projects/dra-ilse-hero.jpg",
       alt: "Fotografía y composición visual de la propuesta médica para la Dra. Ilse Villanueva",
       width: 1200,
-      height: 800,
-      isRealCapture: true
+      height: 800
     },
     repository: {
       available: false,
+      label: "Propuesta en entorno local",
       note: "Propuesta contenida en carpeta local del proyecto; sujeta a aprobación de marca para repositorio público."
     },
     liveDemo: {
@@ -231,100 +223,89 @@ export const PROJECTS_DATA: Project[] = [
   }
 ];
 
-export const TECHNICAL_EXPERIENCE: TechnicalSkillGroup[] = [
+export const TECHNICAL_COMPETENCES: TechnicalCompetence[] = [
   {
-    category: "Desarrollo Front End con React & Next.js",
+    area: "Desarrollo Front End con React & Next.js",
     description:
-      "Experiencia práctica implementando interfaces dinámicas, estructuración con App Router, Server/Client Components y TypeScript riguroso.",
-    skills: [
+      "Construcción de interfaces modulares con TypeScript estricto, gestión de rutas con App Router y sincronización de estado sin sobrecargar el cliente.",
+    items: [
       {
-        name: "React 19 & Componentes Modulares",
-        context: "Comprobado en Con Fe y Kansol mediante hooks, useMemo y estados sincronizados.",
-        highlight: true
+        title: "React 19 & Arquitectura de Componentes",
+        evidence: "Uso de hooks, useMemo y separación modular en Con Fe y Kansol."
       },
       {
-        name: "Next.js (App Router & SSR/SSG)",
-        context: "Rutas anidadas, renderizado optimizado y separación clara de servidor y cliente en Con Fe y Kansol.",
-        highlight: true
+        title: "Next.js (App Router, Server y Client Components)",
+        evidence: "Renderizado estático y dinámico optimizado en Con Fe y Kansol."
       },
       {
-        name: "TypeScript Tipado Estricto",
-        context: "Definición de modelos de datos, validación tipada y eliminación de errores de runtime en proyectos activos.",
-        highlight: true
+        title: "TypeScript Estricto",
+        evidence: "Modelado de datos tipado y comprobación en tiempo de compilación sin errores 'any'."
       }
     ]
   },
   {
-    category: "Integración de APIs y Autenticación",
+    area: "Integración de APIs y Autenticación",
     description:
-      "Conexión con backends modernos como Supabase, manejo de tokens y protección de flujos de usuario.",
-    skills: [
+      "Conexión con servicios externos, manejo seguro de sesiones en servidor y protección de vistas sensibles.",
+    items: [
       {
-        name: "Autenticación & Supabase SSR",
-        context: "Sesiones autenticadas, protección de vistas y sincronización en Con Fe (@supabase/ssr).",
-        highlight: true
+        title: "Autenticación & Supabase SSR",
+        evidence: "Gestión de sesiones persistentes y protección de rutas en Con Fe (@supabase/ssr)."
       },
       {
-        name: "Consumo de APIs & Servicios Externos",
-        context: "Gestión de endpoints en cliente, manipulación de respuestas JSON y filtrado en tiempo real.",
-        highlight: true
+        title: "Consumo de Datos y Filtrado en Tiempo Real",
+        evidence: "Filtrado en memoria de catálogos y persistencia de intenciones personales."
       },
       {
-        name: "Seguridad en Cliente & Roles",
-        context: "Protección de panel privado administrativo en Boda Sofía & Raúl con Supabase Auth."
+        title: "Protección de Paneles Privados",
+        evidence: "Autenticación de acceso a panel administrativo en Boda Sofía & Raúl."
       }
     ]
   },
   {
-    category: "Diseño Responsive, Accesibilidad & Rendimiento",
+    area: "Diseño Responsive, Accesibilidad & Rendimiento",
     description:
-      "Interfaces creadas desde el código con atención al detalle tipográfico, contraste, foco y fluidez.",
-    skills: [
+      "Enfoque en usabilidad real: legibilidad, navegación por teclado y rendimiento en dispositivos móviles.",
+    items: [
       {
-        name: "Diseño Mobile-First & Layouts Adaptables",
-        context: "Adaptabilidad fluida en 375px, 390px, 768px y 1200px+ sin desbordamiento horizontal en todos los proyectos.",
-        highlight: true
+        title: "Diseño Mobile-First Riguroso",
+        evidence: "Adaptación probada en 375px, 390px, 768px y escritorio sin desbordamiento horizontal."
       },
       {
-        name: "Accesibilidad Web (A11y & WCAG)",
-        context: "HTML semántico, foco visible en teclado, etiquetas ARIA y soporte para prefers-reduced-motion.",
-        highlight: true
+        title: "Accesibilidad (A11y)",
+        evidence: "HTML semántico, foco visible, contraste adecuado y soporte para prefers-reduced-motion."
       },
       {
-        name: "Optimización de Rendimiento & Core Web Vitals",
-        context: "Imágenes con carga diferida (lazy loading), control de LCP y empaquetado eficiente de dependencias."
+        title: "Optimización de Carga y Core Web Vitals",
+        evidence: "Imágenes optimizadas con next/image, carga diferida y empaquetado ligero."
       }
     ]
   },
   {
-    category: "Control de Versiones & Flujo Profesional",
+    area: "Control de Versiones y Flujo de Trabajo",
     description:
-      "Buenas prácticas en Git, GitHub y despliegue continuo en plataformas de hosting cloud.",
-    skills: [
+      "Uso disciplinado de Git para estructurar historial de cambios y colaboración técnica.",
+    items: [
       {
-        name: "Git & GitHub",
-        context: "Manejo de repositorios versionados, commits estructurados y ramas principales comprobadas en GitHub.",
-        highlight: true
+        title: "Git & GitHub",
+        evidence: "Repositorios versionados con commits estructurados en repositorios comprobados."
       },
       {
-        name: "Configuración de Entornos de Despliegue",
-        context: "Archivos vercel.json, optimización de variables de entorno y preparación para despliegue continuo."
+        title: "Configuración de Entornos",
+        evidence: "Manejo de variables de entorno y archivos de configuración para despliegue en Vercel."
       }
     ]
   }
 ];
 
-export const PROFILE_INFO = {
+export const PROFILE_DATA = {
   name: "Heidelbergh",
-  role: "Desarrollador Front End",
+  title: "Desarrollador Front End",
   location: "México",
-  bio: "Desarrollador Front End enfocado en crear aplicaciones web modernas, rápidas y accesibles con React, Next.js y TypeScript. Con experiencia comprobada en integración de APIs, flujos de autenticación segura con Supabase, diseño responsive adaptado a móvil y optimización de rendimiento.",
-  githubUsername: "Heidelol",
-  githubUrl: "https://github.com/Heidelol",
-  // Nota: Los datos de contacto que aún no cuentan con confirmación real por parte del usuario
-  // quedan señalados explícitamente en la documentación y no se renderizan como enlaces ficticios.
-  pendingContact: {
-    email: null,
-    linkedin: null
+  statement:
+    "Desarrollador Front End enfocado en React, Next.js y TypeScript. Construyo interfaces legibles, rápidas y accesibles, con experiencia comprobada en integración de APIs, autenticación con Supabase y diseño responsive adaptado a móvil.",
+  github: {
+    handle: "Heidelol",
+    url: "https://github.com/Heidelol"
   }
 };

@@ -1,103 +1,112 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { PROFILE_DATA } from "@/data/projects";
+
+const SECTIONS = [
+  { id: "proyectos", label: "Proyectos" },
+  { id: "experiencia", label: "Habilidades" },
+  { id: "contacto", label: "Contacto" },
+];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("inicio");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 120;
+      const sections = ["inicio", "proyectos", "experiencia", "contacto"];
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const closeMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-200">
-      <div className="container-custom flex items-center justify-between h-16">
+    <header className="sticky top-0 z-40 w-full bg-[#FAFAF9]/90 backdrop-blur-md border-b border-[#E7E5E4] transition-colors duration-200">
+      <div className="container-editorial flex items-center justify-between h-16">
         <Link
           href="#inicio"
-          className="group flex items-center gap-2 text-slate-900 font-semibold tracking-tight text-lg hover:text-sky-700 transition-colors"
+          className="group flex items-baseline gap-2 text-[#1C1917] no-underline focus-visible:outline-none"
+          aria-label="Ir al inicio - Heidelbergh"
         >
-          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-900 text-white font-mono text-sm font-bold group-hover:bg-sky-600 transition-colors">
-            H
+          <span className="font-semibold tracking-tight text-base sm:text-lg group-hover:text-[#0A2540] transition-colors duration-200">
+            {PROFILE_DATA.name}
           </span>
-          <span className="font-semibold text-slate-900">
-            Heidelbergh
-            <span className="text-xs font-normal text-slate-500 block -mt-1 sm:inline sm:ml-2 sm:mt-0 sm:pl-2 sm:border-l sm:border-slate-300">
-              Front End
-            </span>
+          <span className="text-xs text-[#78716C] font-mono tracking-normal">
+            / {PROFILE_DATA.title}
           </span>
         </Link>
 
         {/* Navegación Desktop */}
         <nav
-          className="hidden md:flex items-center gap-1"
+          className="hidden md:flex items-center gap-6"
           aria-label="Navegación principal"
         >
+          {SECTIONS.map((sec) => {
+            const isActive = activeSection === sec.id;
+            return (
+              <a
+                key={sec.id}
+                href={`#${sec.id}`}
+                className={`text-sm tracking-tight transition-editorial py-1 ${
+                  isActive
+                    ? "text-[#0A2540] font-semibold border-b-2 border-[#0A2540]"
+                    : "text-[#57534E] hover:text-[#1C1917]"
+                }`}
+              >
+                {sec.label}
+              </a>
+            );
+          })}
+
           <a
-            href="#proyectos"
-            className="px-3.5 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors"
-          >
-            Proyectos
-          </a>
-          <a
-            href="#experiencia"
-            className="px-3.5 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors"
-          >
-            Habilidades Técnicas
-          </a>
-          <a
-            href="#contacto"
-            className="px-3.5 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors"
-          >
-            Contacto & GitHub
-          </a>
-          <a
-            href="https://github.com/Heidelol"
+            href={PROFILE_DATA.github.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 bg-slate-100 hover:bg-slate-200 hover:text-slate-900 rounded-md border border-slate-300/80 transition-colors"
-            aria-label="Perfil de GitHub de Heidelbergh (abre en nueva pestaña)"
+            className="text-xs font-mono font-medium text-[#1C1917] hover:text-[#0A2540] px-2.5 py-1 rounded border border-[#D6D3D1] hover:border-[#1C1917] transition-editorial"
+            aria-label="GitHub @Heidelol (abre en nueva pestaña)"
           >
-            <svg
-              className="w-4 h-4"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-              />
-            </svg>
-            GitHub
+            GitHub ↗
           </a>
         </nav>
 
-        {/* Botón menú móvil */}
+        {/* Botón menú móvil con espacio táctil amplio (min 44x44px) */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+          className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-[#1C1917] hover:bg-[#F5F5F4] rounded transition-editorial"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú principal"}
         >
           <svg
-            className="w-6 h-6"
+            className="w-5 h-5"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
+            strokeWidth="1.75"
             stroke="currentColor"
             aria-hidden="true"
           >
             {mobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 7.5h16.5M3.75 16.5h16.5" />
             )}
           </svg>
         </button>
@@ -105,36 +114,26 @@ export function Header() {
 
       {/* Menú desplegable móvil */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1">
-          <a
-            href="#proyectos"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md"
-          >
-            Proyectos
-          </a>
-          <a
-            href="#experiencia"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md"
-          >
-            Habilidades Técnicas
-          </a>
-          <a
-            href="#contacto"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md"
-          >
-            Contacto & GitHub
-          </a>
-          <div className="pt-2">
+        <div className="md:hidden border-b border-[#E7E5E4] bg-[#FAFAF9] px-6 py-4 space-y-3">
+          {SECTIONS.map((sec) => (
             <a
-              href="https://github.com/Heidelol"
+              key={sec.id}
+              href={`#${sec.id}`}
+              onClick={closeMenu}
+              className="block py-2 text-base font-medium text-[#1C1917] hover:text-[#0A2540] transition-editorial"
+            >
+              {sec.label}
+            </a>
+          ))}
+          <div className="pt-2 border-t border-[#E7E5E4]">
+            <a
+              href={PROFILE_DATA.github.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-md"
+              onClick={closeMenu}
+              className="inline-flex items-center gap-1.5 py-2 text-sm font-mono text-[#57534E] hover:text-[#1C1917]"
             >
-              Ver perfil en GitHub (@Heidelol)
+              github.com/{PROFILE_DATA.github.handle} ↗
             </a>
           </div>
         </div>
