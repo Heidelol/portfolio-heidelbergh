@@ -6,7 +6,9 @@ import { PROFILE_DATA } from "@/data/projects";
 
 const SECTIONS = [
   { id: "proyectos", label: "Proyectos" },
-  { id: "experiencia", label: "Habilidades" },
+  { id: "experiencia", label: "Experiencia" },
+  { id: "competencias", label: "Competencias" },
+  { id: "formacion", label: "Formación" },
   { id: "contacto", label: "Contacto" },
 ];
 
@@ -16,8 +18,8 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
-      const sections = ["inicio", "proyectos", "experiencia", "contacto"];
+      const scrollPos = window.scrollY + 140;
+      const sections = ["inicio", "proyectos", "experiencia", "competencias", "formacion", "contacto"];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -44,12 +46,12 @@ export function Header() {
         <Link
           href="#inicio"
           className="group flex items-baseline gap-2 text-[#1C1917] no-underline focus-visible:outline-none"
-          aria-label="Ir al inicio - Heidelbergh"
+          aria-label={`Ir al inicio - ${PROFILE_DATA.fullName}`}
         >
           <span className="font-semibold tracking-tight text-base sm:text-lg group-hover:text-[#0A2540] transition-colors duration-200">
-            {PROFILE_DATA.name}
+            {PROFILE_DATA.fullName}
           </span>
-          <span className="text-xs text-[#78716C] font-mono tracking-normal">
+          <span className="text-xs text-[#78716C] font-mono tracking-normal hidden sm:inline">
             / {PROFILE_DATA.title}
           </span>
         </Link>
@@ -77,11 +79,11 @@ export function Header() {
           })}
 
           <a
-            href={PROFILE_DATA.github.url}
+            href={PROFILE_DATA.contact.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-mono font-medium text-[#1C1917] hover:text-[#0A2540] px-2.5 py-1 rounded border border-[#D6D3D1] hover:border-[#1C1917] transition-editorial"
-            aria-label="GitHub @Heidelol (abre en nueva pestaña)"
+            aria-label="Perfil de GitHub (abre en nueva pestaña)"
           >
             GitHub ↗
           </a>
@@ -125,15 +127,24 @@ export function Header() {
               {sec.label}
             </a>
           ))}
-          <div className="pt-2 border-t border-[#E7E5E4]">
+          <div className="pt-2 border-t border-[#E7E5E4] flex flex-col gap-2">
             <a
-              href={PROFILE_DATA.github.url}
+              href={PROFILE_DATA.contact.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
               className="inline-flex items-center gap-1.5 py-2 text-sm font-mono text-[#57534E] hover:text-[#1C1917]"
             >
-              github.com/{PROFILE_DATA.github.handle} ↗
+              github.com/{PROFILE_DATA.contact.githubHandle} ↗
+            </a>
+            <a
+              href={PROFILE_DATA.contact.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="inline-flex items-center gap-1.5 py-2 text-sm font-mono text-[#57534E] hover:text-[#1C1917]"
+            >
+              LinkedIn ↗
             </a>
           </div>
         </div>

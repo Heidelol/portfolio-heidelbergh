@@ -4,48 +4,89 @@ export function ContactSection() {
   return (
     <section id="contacto" className="py-20">
       <div className="container-editorial">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <p className="text-xs font-mono uppercase tracking-widest text-[#0A2540] font-semibold mb-2">
-            Contacto & GitHub
+            Contacto
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1C1917] mb-4">
-            Conversación sobre vacantes Front End
+            Conversemos sobre vacantes y proyectos Front End
           </h2>
           <p className="text-base text-[#57534E] leading-relaxed mb-8">
-            Puedes consultar el código fuente de los proyectos, la estructura modular y los registros de commits directamente en mi perfil de GitHub.
+            Disponible para oportunidades laborales en desarrollo Front End y Full Stack. Puedes comunicarte directamente a través de correo electrónico, teléfono o redes profesionales.
           </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-10">
-            <a
-              href={PROFILE_DATA.github.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-editorial text-lg font-semibold"
-              aria-label="Perfil de GitHub @Heidelol (abre en nueva pestaña)"
-            >
-              github.com/{PROFILE_DATA.github.handle} ↗
-            </a>
-            <span className="text-xs font-mono text-[#78716C]">
-              (Canal público verificado para revisión de código)
-            </span>
-          </div>
-
-          <div className="border-t border-[#E7E5E4] pt-6 text-xs text-[#78716C] leading-relaxed">
-            <span className="font-mono text-[#1C1917] block mb-1">
-              Nota sobre datos de contacto:
-            </span>
-            <p>
-              El correo electrónico personal y el perfil de LinkedIn se encuentran reservados para revisión y no se despliegan como enlaces ficticios. Para contacto inicial sobre oportunidades laborales, puedes utilizar la mensajería de GitHub en{" "}
+          {/* Canales de contacto directos con enlaces activos */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <div className="p-4 bg-[#F5F5F4]/60 border border-[#E7E5E4] rounded-sm">
+              <span className="text-xs font-mono text-[#78716C] block mb-1">
+                Correo electrónico
+              </span>
               <a
-                href={PROFILE_DATA.github.url}
+                href={PROFILE_DATA.contact.emailLink}
+                className="link-editorial text-sm font-semibold"
+              >
+                {PROFILE_DATA.contact.email} ↗
+              </a>
+            </div>
+
+            <div className="p-4 bg-[#F5F5F4]/60 border border-[#E7E5E4] rounded-sm">
+              <span className="text-xs font-mono text-[#78716C] block mb-1">
+                Teléfono y llamadas directas
+              </span>
+              <a
+                href={PROFILE_DATA.contact.phoneTel}
+                className="link-editorial text-sm font-semibold"
+              >
+                {PROFILE_DATA.contact.phoneDisplay} ↗
+              </a>
+            </div>
+
+            <div className="p-4 bg-[#F5F5F4]/60 border border-[#E7E5E4] rounded-sm">
+              <span className="text-xs font-mono text-[#78716C] block mb-1">
+                WhatsApp
+              </span>
+              <a
+                href={PROFILE_DATA.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#1C1917] underline hover:text-[#0A2540] transition-editorial"
+                className="link-editorial text-sm font-semibold"
               >
-                @{PROFILE_DATA.github.handle}
+                Mensaje directo por WhatsApp ↗
               </a>
-              .
-            </p>
+            </div>
+
+            <div className="p-4 bg-[#F5F5F4]/60 border border-[#E7E5E4] rounded-sm">
+              <span className="text-xs font-mono text-[#78716C] block mb-1">
+                LinkedIn
+              </span>
+              <a
+                href={PROFILE_DATA.contact.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-editorial text-sm font-semibold"
+              >
+                linkedin.com/in/heidelol ↗
+              </a>
+            </div>
+          </div>
+
+          {/* Perfil en GitHub y ubicación */}
+          <div className="pt-6 border-t border-[#E7E5E4] flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 text-xs font-mono text-[#78716C]">
+            <div>
+              <span className="text-[#1C1917] font-semibold">GitHub:</span>{" "}
+              <a
+                href={PROFILE_DATA.contact.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0A2540] underline hover:text-[#1C1917] transition-editorial"
+              >
+                github.com/{PROFILE_DATA.contact.githubHandle}
+              </a>
+            </div>
+            <div>
+              <span>Ubicación:</span>{" "}
+              <span className="text-[#1C1917]">{PROFILE_DATA.location}</span>
+            </div>
           </div>
         </div>
       </div>
